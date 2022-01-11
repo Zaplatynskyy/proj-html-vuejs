@@ -102,7 +102,7 @@ export default {
 
         // testo informazioni sezione
         p {
-            font-size: .9rem;
+            font-size: .8rem;
             line-height: 20px;
             color: $grey;
         }
@@ -145,6 +145,7 @@ export default {
         // immagine principale visualizzata sullo sfondo
         .important_img {
             width: 100%;
+            border-radius: 5px;
             position: relative;
             z-index: 1;
         }

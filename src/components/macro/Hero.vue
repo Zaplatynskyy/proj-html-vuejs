@@ -34,6 +34,7 @@ export default {
         background-image: url('../../assets/img/home-3-hero-bg.jpg');
         background-position: center;
         background-size: cover;
+        margin-bottom: 90px;
         position: relative;
 
         // titolo centrale del jumbotron con il bottone

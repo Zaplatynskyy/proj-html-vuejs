@@ -23,6 +23,25 @@ body {
     margin: 0 auto;
 }
 
+.container_small {
+    width: 60%;
+    margin: 0 auto;
+}
+
 a {
     text-decoration: none;
+}
+
+.clearfix {
+    content : "";
+    display: table;
+    clear: both;
+}
+
+.left {
+    float: left;
+}
+
+section {
+    padding: 150px 0;
 }

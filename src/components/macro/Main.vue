@@ -2,19 +2,22 @@
     <main>
         <WorkCulture/>
         <UpgradeLife/>
+        <Courses/>
     </main>
 </template>
 
 <script>
 import WorkCulture from '../section/WorkCulture.vue'
 import UpgradeLife from '../section/UpgradeLife.vue'
+import Courses from '../section/Courses.vue'
 
 export default {
     name : 'Main',
     
     components : {
         WorkCulture,
-        UpgradeLife
+        UpgradeLife,
+        Courses
     }
 }
 </script>
@@ -22,7 +25,7 @@ export default {
 <style lang="scss" scoped>
 
     .debug main {
-        height: 1800px;
+        height: 2500px;
     }
 
 </style>

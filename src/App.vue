@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="debug">
-    <Header/>
+    <Header :elNav="headerNav"/>
     <Hero/>
     <Main/>
     <Footer/>
@@ -20,7 +20,34 @@ export default {
     Hero,
     Main,
     Footer
+  },
+  data() {
+    return {
+      headerNav : [
+        {
+          element : 'Home',
+          active : false
+        },
+        {
+          element : 'Pages',
+          active : false
+        },{
+          element : 'Courses',
+          active : false
+        },{
+          element : 'Features',
+          active : false
+        },{
+          element : 'Blog',
+          active : false
+        },{
+          element : 'Shop',
+          active : false
+        },
+      ]
+    }
   }
+
 }
 </script>
 

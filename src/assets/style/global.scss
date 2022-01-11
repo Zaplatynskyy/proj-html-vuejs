@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 /*--------------------
     RESET
 --------------------*/
@@ -6,4 +8,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/*--------------------
+    COMMONS
+--------------------*/
+
+body {
+    font-family: $primary_font;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
 }

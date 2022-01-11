@@ -40,6 +40,7 @@
 export default {
     name : 'Header',
 
+    // props di array degli elementi della nav ricevuta da App.vue
     props : {
         elNav : Array
     }

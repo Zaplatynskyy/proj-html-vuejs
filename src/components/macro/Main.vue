@@ -5,6 +5,7 @@
         <Courses/>
         <Hearts/>
         <Transform/>
+        <Blogs/>
     </main>
 </template>
 
@@ -14,6 +15,7 @@ import UpgradeLife from '../section/UpgradeLife.vue'
 import Courses from '../section/Courses.vue'
 import Hearts from '../section/Hearts.vue'
 import Transform from '../section/Transform.vue'
+import Blogs from '../section/Blogs.vue'
 
 export default {
     name : 'Main',
@@ -23,7 +25,8 @@ export default {
         UpgradeLife,
         Courses,
         Hearts,
-        Transform
+        Transform,
+        Blogs
     }
 }
 </script>
@@ -31,7 +34,7 @@ export default {
 <style lang="scss" scoped>
 
     .debug main {
-        height: 3500px;
+        height: 4500px;
     }
 
 </style>

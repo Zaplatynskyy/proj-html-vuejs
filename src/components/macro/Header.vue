@@ -53,6 +53,12 @@ export default {
     header {
         width: 100%;
         height: 80px;
+        background-color: #fff;
+        box-shadow: 0px 1px 0px 1px rgba(175,176,171,1);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
 
         // imposta il colore a tutte le icone dell'header
         i {

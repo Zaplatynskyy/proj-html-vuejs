@@ -94,7 +94,7 @@ export default {
 
     .section_text {
         width: 28%;
-        margin-left: 100px;
+        margin-left: 180px;
 
         .circle {
             width: 60px;

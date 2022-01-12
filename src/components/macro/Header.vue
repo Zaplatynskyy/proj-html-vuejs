@@ -136,7 +136,7 @@ export default {
                             width: 250px;
                             background-color: #f5f5f5;
                             border: none;
-                            border-radius: 2px;
+                            border-radius: 5px;
                             padding: 15px;
                         }
 

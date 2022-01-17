@@ -42,10 +42,7 @@
 
                 <!-- puntini del carousel -->
                 <div class="dots" >
-                    <div class="dot" :class="{active : range.start==0}" @click="selectEls(0, 3)"></div>
-                    <div class="dot" :class="{active : range.start==3}" @click="selectEls(3, 6)"></div>
-                    <div class="dot" :class="{active : range.start==6}" @click="selectEls(6, 9)"></div>
-
+                    <div class="dot" v-for="(dot, i) in pagesCarousel" :key="i" :class="{active : range.start==(i * 3)}" @click="selectEls(i)"></div>
                 </div>
             </div>
 
@@ -76,7 +73,11 @@ export default {
             range : {
                 start : 0,
                 end : 3
-            }
+            },
+
+            autoRun : null,
+
+            counter : 0
         }
     },
 
@@ -85,17 +86,37 @@ export default {
     },
 
     methods : {
-        selectEls : function (from,to) {
+        selectEls : function (i) {
             this.range = {
-                start : from,
-                end : to
+                start : i * 3,
+                end : (i * 3) + 3
             }
-        }
+        },
+    },
+
+    mounted() {
+        this.autoRun = setInterval( ()=> {
+            if(this.counter == this.pagesCarousel - 1) {
+                this.counter = 0;
+            } else {
+                this.counter++;
+            }
+
+            this.range = {
+                start : this.counter * 3,
+                end : (this.counter * 3) + 3
+            }
+            
+        }, 5000)
     },
 
     computed : {
         filterCourses : function() {
             return this.courses.slice(this.range.start, this.range.end)
+        },
+
+        pagesCarousel : function() {
+            return Math.ceil(this.courses.length / 3);
         }
     }
 }

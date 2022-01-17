@@ -6,102 +6,47 @@
             <!-- titolo sezione -->
             <h2 class="title">Latest Online <span class="important">Courses</span></h2>
             
-            <!-- riga contenitore card dei corsi -->
-            <div class="row">
+            <div class="carousel">
+                <!-- riga contenitore card dei corsi -->
+                <div class="row">
 
-                <!-- card del corso -->
-                <div class="card">
-                    <!-- immagine della card -->
-                    <div class="card_img">
-                        <img src="../../assets/img/course-02-480x298.jpg" alt="course maxcoach">
-                    </div>
+                    <!-- card del corso -->
+                    <div class="card" v-for="(course,i) in filterCourses" :key="i">
+                        <!-- immagine della card -->
+                        <div class="card_img">
+                            <img :src="require(`../../assets/img/${course.img}`)" alt="course maxcoach">
+                            <div v-if="course.price == 0" class="free"><span>free</span></div>
+                        </div>
 
-                    <!-- testo della card contenente le info sul corso -->
-                    <div class="card_text">
-                        <!-- prezzo del corso -->
-                        <div class="price">$40.<span>00</span></div>
-                        <!-- informazioni sul corso -->
-                        <div class="info">Learning to Write as a Professional Author</div>
-                        <!-- numero delle lezioni e dei partecipanti -->
-                        <div class="numbers">
-                            <div class="number lessons">
-                                <i class="far fa-file-alt"></i>
-                                20 Lessons
-                            </div>
+                        <!-- testo della card contenente le info sul corso -->
+                        <div class="card_text">
+                            <!-- prezzo del corso -->
+                            <div class="price">${{course.price}}.<span>00</span></div>
+                            <!-- informazioni sul corso -->
+                            <div class="info">{{course.info}}</div>
+                            <!-- numero delle lezioni e dei partecipanti -->
+                            <div class="numbers">
+                                <div class="number lessons">
+                                    <i class="far fa-file-alt"></i>
+                                    {{course.numberLessons}} Lessons
+                                </div>
 
-                            <div class="number students">
-                                <i class="far fa-user"></i>
-                                50 Students
+                                <div class="number students">
+                                    <i class="far fa-user"></i>
+                                    {{course.numberStudents}} Students
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- card del corso -->
-                <div class="card">
-                    <!-- immagine della card -->
-                    <div class="card_img">
-                        <img src="../../assets/img/stock-full-hd-03-480x298.jpg" alt="course strategies maxcoach">
-                        <div class="free"><span>free</span></div>
-                    </div>
+                <!-- puntini del carousel -->
+                <div class="dots" >
+                    <div class="dot" :class="{active : range.start==0}" @click="selectEls(0, 3)"></div>
+                    <div class="dot" :class="{active : range.start==3}" @click="selectEls(3, 6)"></div>
+                    <div class="dot" :class="{active : range.start==6}" @click="selectEls(6, 9)"></div>
 
-                    <!-- testo della card contenente le info sul corso -->
-                    <div class="card_text">
-                        <!-- prezzo del corso -->
-                        <div class="price">$0.<span>00</span></div>
-                        <!-- informazioni sul corso -->
-                        <div class="info">Customer-centric Info-Tech Strategies</div>
-                        <!-- numero delle lezioni e dei partecipanti -->
-                        <div class="numbers">
-                            <div class="number lessons">
-                                <i class="far fa-file-alt"></i>
-                                24 Lessons
-                            </div>
-
-                            <div class="number students">
-                                <i class="far fa-user"></i>
-                                769 Students
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                
-                <!-- card del corso -->
-                <div class="card">
-                    <!-- immagine della card -->
-                    <div class="card_img">
-                        <img src="../../assets/img/stock-full-hd-04-480x298.jpg" alt="course python maxcoach">
-                    </div>
-
-                    <!-- testo della card contenente le info sul corso -->
-                    <div class="card_text">
-                        <!-- prezzo del corso -->
-                        <div class="price">$19.<span>00</span></div>
-                        <!-- informazioni sul corso -->
-                        <div class="info">Open Programming Courses for Everyone: Python</div>
-                        <!-- numero delle lezioni e dei partecipanti -->
-                        <div class="numbers">
-                            <div class="number lessons">
-                                <i class="far fa-file-alt"></i>
-                                17 Lessons
-                            </div>
-
-                            <div class="number students">
-                                <i class="far fa-user"></i>
-                                62 Students
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- puntini del carousel -->
-            <div class="dots">
-                <div class="dot active"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
             </div>
 
             <!-- contenitore link collegamento per tutti i corsi -->
@@ -124,7 +69,35 @@
 
 <script>
 export default {
-    name : 'Courses'
+    name : 'Courses',
+
+    data() {
+        return {
+            range : {
+                start : 0,
+                end : 3
+            }
+        }
+    },
+
+    props : {
+        courses : Array
+    },
+
+    methods : {
+        selectEls : function (from,to) {
+            this.range = {
+                start : from,
+                end : to
+            }
+        }
+    },
+
+    computed : {
+        filterCourses : function() {
+            return this.courses.slice(this.range.start, this.range.end)
+        }
+    }
 }
 </script>
 
@@ -263,17 +236,18 @@ export default {
             margin: 40px 0;
 
             .dot {
-                width: 5px;
-                height: 5px;
+                width: 8px;
+                height: 8px;
                 vertical-align: middle;
                 background-color: $lightgrey;
                 border-radius: 50%;
                 margin: 0 10px;
                 display: inline-block;
+                cursor: pointer;
 
                 &.active {
-                    width: 8px;
-                    height: 8px;
+                    width: 10px;
+                    height: 10px;
                     background-color: #333;
                 }
             }
